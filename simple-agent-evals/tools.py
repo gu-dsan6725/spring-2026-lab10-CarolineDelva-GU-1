@@ -18,6 +18,8 @@ import time
 import requests
 from ddgs import DDGS
 from strands.tools.decorator import tool
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 
 # Configure logging
@@ -35,6 +37,17 @@ OPEN_METEO_BASE_URL = "https://api.open-meteo.com/v1/forecast"
 NOMINATIM_USER_AGENT = "simple-agent-evals/1.0"
 HTTP_TIMEOUT_SECONDS = 10
 
+
+CITY_TIMEZONES = {
+    "tokyo": "Asia/Tokyo",
+    "new york": "America/New_York",
+    "london": "Europe/London",
+    "paris": "Europe/Paris",
+    "los angeles": "America/Los_Angeles",
+    "chicago": "America/Chicago",
+    "berlin": "Europe/Berlin",
+    "sydney": "Australia/Sydney",
+}
 
 # ---------------------------------------------------------------------------
 # Private helpers (used by the public tool functions below)
@@ -121,6 +134,10 @@ def _format_distance(
     """
     miles = distance_meters / 1609.34
     return f"{miles:.1f} miles"
+
+def _format_utc_offset(offset_str: str) -> str:
+    """Convert +0900 → +09:00"""
+    return offset_str[:3] + ":" + offset_str[3:]
 
 
 # ---------------------------------------------------------------------------
@@ -282,3 +299,84 @@ def get_directions(
     except Exception as e:
         logger.error(f"[Tool] get_directions failed: {e}")
         return json.dumps({"error": str(e)})
+    
+@tool
+def get_current_time(city: str) -> str:
+    """
+    Get current time in a given city.
+
+    Args:
+        city: Name of the city (e.g. 'Tokyo', 'London')
+
+    Returns:
+        String with current time, timezone, and UTC offset
+    """
+    logger.info(f"[Tool] get_current_time: city='{city}'")
+
+    try:
+        tz_name = CITY_TIMEZONES.get(city.lower())
+        if not tz_name:
+            return f"Sorry, I don't know the timezone for '{city}'."
+
+        now = datetime.now(ZoneInfo(tz_name))
+
+        time_str = now.strftime("%Y-%m-%d %H:%M:%S")
+        tz_abbr = now.strftime("%Z")
+        utc_offset = _format_utc_offset(now.strftime("%z"))
+
+        result = (
+            f"Current time in {city.title()}: {time_str} "
+            f"({tz_abbr}, UTC{utc_offset})"
+        )
+
+        logger.info(f"[Tool] get_current_time result: {result}")
+        return result
+
+    except Exception as e:
+        logger.error(f"[Tool] get_current_time failed: {e}")
+        return f"Error retrieving time for {city}"
+    
+@tool
+def get_exchange_rate(
+    base: str,
+    target: str,
+    amount: float = 1.0
+) -> str:
+    """
+    Get exchange rate using Frankfurter API.
+
+    Args:
+        base: Base currency (e.g. 'USD')
+        target: Target currency (e.g. 'EUR')
+        amount: Amount to convert
+
+    Returns:
+        String with exchange rate and converted value
+    """
+    logger.info(f"[Tool] get_exchange_rate: {base}->{target}, amount={amount}")
+
+    try:
+        url = f"https://api.frankfurter.app/latest?from={base.upper()}&to={target.upper()}"
+
+        response = requests.get(url, timeout=HTTP_TIMEOUT_SECONDS)
+        response.raise_for_status()
+
+        data = response.json()
+
+        rate = data["rates"].get(target.upper())
+        if rate is None:
+            return f"Invalid currency code: {target}"
+
+        converted = amount * rate
+
+        result = (
+            f"Exchange rate {base.upper()} → {target.upper()}: {rate:.4f}. "
+            f"{amount} {base.upper()} = {converted:.2f} {target.upper()}."
+        )
+
+        logger.info(f"[Tool] get_exchange_rate result: {result}")
+        return result
+
+    except Exception as e:
+        logger.error(f"[Tool] get_exchange_rate failed: {e}")
+        return "Error retrieving exchange rate"

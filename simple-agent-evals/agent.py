@@ -21,10 +21,11 @@ from strands.telemetry import StrandsTelemetry
 
 from tools import (
     duckduckgo_search,
-    get_directions,
     get_weather,
+    get_directions,
+    get_current_time,
+    get_exchange_rate,
 )
-
 
 # Configure logging
 logging.basicConfig(
@@ -126,7 +127,13 @@ def _create_agent() -> Agent:
     agent = Agent(
         system_prompt=system_prompt,
         model=model,
-        tools=[duckduckgo_search, get_weather, get_directions]
+        tools=[
+    duckduckgo_search,
+    get_weather,
+    get_directions,
+    get_current_time,
+    get_exchange_rate,
+]
     )
 
     logger.info("Agent created successfully")
@@ -144,8 +151,7 @@ def create_agent_for_eval() -> Agent:
     return _create_agent()
 
 
-def main() -> None:
-    """Main function to run the agent interactively."""
+async def main():
     logger.info("Starting Simple Agent Evals")
 
     agent = _create_agent()
@@ -168,14 +174,12 @@ def main() -> None:
             if not user_input:
                 continue
 
-            response = asyncio.run(agent.invoke_async(user_input))
+            response = await agent.invoke_async(user_input)
             print(f"\nAgent: {response}\n")
 
         except EOFError:
-            print("\n\nGoodbye!")
             break
         except KeyboardInterrupt:
-            print("\n\nGoodbye!")
             break
         except Exception as e:
             logger.error(f"Error running agent: {e}")
@@ -183,4 +187,45 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
+
+# def main() -> None:
+#     """Main function to run the agent interactively."""
+#     logger.info("Starting Simple Agent Evals")
+
+#     agent = _create_agent()
+
+#     print("\n" + "=" * 80)
+#     print("Simple Agent with Search, Weather, and Directions")
+#     print("=" * 80 + "\n")
+
+#     print("Ask me anything! I can search the web, check weather, and get directions.")
+#     print("Type 'quit' to exit.\n")
+
+#     while True:
+#         try:
+#             user_input = input("You: ").strip()
+
+#             if user_input.lower() in ["quit", "exit", "q"]:
+#                 print("\nGoodbye!")
+#                 break
+
+#             if not user_input:
+#                 continue
+
+#             response = asyncio.run(agent.invoke_async(user_input))
+#             print(f"\nAgent: {response}\n")
+
+#         except EOFError:
+#             print("\n\nGoodbye!")
+#             break
+#         except KeyboardInterrupt:
+#             print("\n\nGoodbye!")
+#             break
+#         except Exception as e:
+#             logger.error(f"Error running agent: {e}")
+#             print(f"\nError: {e}\n")
+
+
+# if __name__ == "__main__":
+#     main()
