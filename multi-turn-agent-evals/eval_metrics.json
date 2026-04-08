@@ -1,0 +1,209 @@
+{
+  "total_scenarios": 5,
+  "goals_completed": 0,
+  "average_turns": 1.0,
+  "overall_scores": {
+    "GoalCompletion": {
+      "average": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "count": 5
+    },
+    "ToolUsage": {
+      "average": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "count": 5
+    },
+    "TurnEfficiency": {
+      "average": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "count": 5
+    },
+    "ConversationQuality": {
+      "average": 0.5,
+      "min": 0.5,
+      "max": 0.5,
+      "count": 5
+    },
+    "PolicyAdherence": {
+      "average": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "count": 5
+    }
+  },
+  "per_category": {
+    "order_change": {
+      "GoalCompletion": {
+        "average": 0.0,
+        "count": 1
+      },
+      "ToolUsage": {
+        "average": 0.0,
+        "count": 1
+      },
+      "TurnEfficiency": {
+        "average": 0.0,
+        "count": 1
+      },
+      "ConversationQuality": {
+        "average": 0.5,
+        "count": 1
+      },
+      "PolicyAdherence": {
+        "average": 0.0,
+        "count": 1
+      }
+    },
+    "order_status": {
+      "GoalCompletion": {
+        "average": 0.0,
+        "count": 2
+      },
+      "ToolUsage": {
+        "average": 0.0,
+        "count": 2
+      },
+      "TurnEfficiency": {
+        "average": 0.0,
+        "count": 2
+      },
+      "ConversationQuality": {
+        "average": 0.5,
+        "count": 2
+      },
+      "PolicyAdherence": {
+        "average": 0.0,
+        "count": 2
+      }
+    },
+    "product_search": {
+      "GoalCompletion": {
+        "average": 0.0,
+        "count": 1
+      },
+      "ToolUsage": {
+        "average": 0.0,
+        "count": 1
+      },
+      "TurnEfficiency": {
+        "average": 0.0,
+        "count": 1
+      },
+      "ConversationQuality": {
+        "average": 0.5,
+        "count": 1
+      },
+      "PolicyAdherence": {
+        "average": 0.0,
+        "count": 1
+      }
+    },
+    "return": {
+      "GoalCompletion": {
+        "average": 0.0,
+        "count": 1
+      },
+      "ToolUsage": {
+        "average": 0.0,
+        "count": 1
+      },
+      "TurnEfficiency": {
+        "average": 0.0,
+        "count": 1
+      },
+      "ConversationQuality": {
+        "average": 0.5,
+        "count": 1
+      },
+      "PolicyAdherence": {
+        "average": 0.0,
+        "count": 1
+      }
+    }
+  },
+  "per_case": [
+    {
+      "name": "Polite customer checks order status",
+      "category": "order_status",
+      "persona": "polite",
+      "turns": 1,
+      "goal_completed": false,
+      "tools_used": [],
+      "latency_seconds": 0.11,
+      "scores": {
+        "GoalCompletion": 0.0,
+        "ToolUsage": 0.0,
+        "TurnEfficiency": 0.0,
+        "ConversationQuality": 0.5,
+        "PolicyAdherence": 0.0
+      }
+    },
+    {
+      "name": "Demanding customer wants order update",
+      "category": "order_status",
+      "persona": "demanding",
+      "turns": 1,
+      "goal_completed": false,
+      "tools_used": [],
+      "latency_seconds": 0.09,
+      "scores": {
+        "GoalCompletion": 0.0,
+        "ToolUsage": 0.0,
+        "TurnEfficiency": 0.0,
+        "ConversationQuality": 0.5,
+        "PolicyAdherence": 0.0
+      }
+    },
+    {
+      "name": "Customer wants to return a product",
+      "category": "return",
+      "persona": "neutral",
+      "turns": 1,
+      "goal_completed": false,
+      "tools_used": [],
+      "latency_seconds": 0.06,
+      "scores": {
+        "GoalCompletion": 0.0,
+        "ToolUsage": 0.0,
+        "TurnEfficiency": 0.0,
+        "ConversationQuality": 0.5,
+        "PolicyAdherence": 0.0
+      }
+    },
+    {
+      "name": "Confused customer needs product help",
+      "category": "product_search",
+      "persona": "confused",
+      "turns": 1,
+      "goal_completed": false,
+      "tools_used": [],
+      "latency_seconds": 0.08,
+      "scores": {
+        "GoalCompletion": 0.0,
+        "ToolUsage": 0.0,
+        "TurnEfficiency": 0.0,
+        "ConversationQuality": 0.5,
+        "PolicyAdherence": 0.0
+      }
+    },
+    {
+      "name": "Customer changes shipping address",
+      "category": "order_change",
+      "persona": "polite",
+      "turns": 1,
+      "goal_completed": false,
+      "tools_used": [],
+      "latency_seconds": 0.07,
+      "scores": {
+        "GoalCompletion": 0.0,
+        "ToolUsage": 0.0,
+        "TurnEfficiency": 0.0,
+        "ConversationQuality": 0.5,
+        "PolicyAdherence": 0.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+
+================================================================================
+MULTI-TURN EVALUATION SUMMARY
+================================================================================
+Total scenarios: 5
+
+--------------------------------------------------------------------------------
+Scorer                     Avg Score      Min      Max    Count
+--------------------------------------------------------------------------------
+GoalCompletion                 0.00%     0.00     0.00        5
+ToolUsage                      0.00%     0.00     0.00        5
+TurnEfficiency                 0.00%     0.00     0.00        5
+ConversationQuality           50.00%     0.50     0.50        5
+PolicyAdherence                0.00%     0.00     0.00        5
+
+--------------------------------------------------------------------------------
+PER-CATEGORY BREAKDOWN
+--------------------------------------------------------------------------------
+
+  [order_change]
+    GoalCompletion             0.00%  (1 cases)
+    ToolUsage                  0.00%  (1 cases)
+    TurnEfficiency             0.00%  (1 cases)
+    ConversationQuality       50.00%  (1 cases)
+    PolicyAdherence            0.00%  (1 cases)
+
+  [order_status]
+    GoalCompletion             0.00%  (2 cases)
+    ToolUsage                  0.00%  (2 cases)
+    TurnEfficiency             0.00%  (2 cases)
+    ConversationQuality       50.00%  (2 cases)
+    PolicyAdherence            0.00%  (2 cases)
+
+  [product_search]
+    GoalCompletion             0.00%  (1 cases)
+    ToolUsage                  0.00%  (1 cases)
+    TurnEfficiency             0.00%  (1 cases)
+    ConversationQuality       50.00%  (1 cases)
+    PolicyAdherence            0.00%  (1 cases)
+
+  [return]
+    GoalCompletion             0.00%  (1 cases)
+    ToolUsage                  0.00%  (1 cases)
+    TurnEfficiency             0.00%  (1 cases)
+    ConversationQuality       50.00%  (1 cases)
+    PolicyAdherence            0.00%  (1 cases)
+
+--------------------------------------------------------------------------------
+PER-PERSONA BREAKDOWN
+--------------------------------------------------------------------------------
+
+  [confused]
+    GoalCompletion:          0.00%  (1 cases)
+    Avg turns:                 1.0
+
+  [demanding]
+    GoalCompletion:          0.00%  (1 cases)
+    Avg turns:                 1.0
+
+  [neutral]
+    GoalCompletion:          0.00%  (1 cases)
+    Avg turns:                 1.0
+
+  [polite]
+    GoalCompletion:          0.00%  (2 cases)
+    Avg turns:                 1.0
+
+--------------------------------------------------------------------------------
+SCENARIO DETAILS
+--------------------------------------------------------------------------------
+
+  [FAIL] Polite customer checks order status (polite, 1 turns, 0.1s)
+    Tools: []
+    GoalCompletion: 0.00
+    ToolUsage: 0.00
+    TurnEfficiency: 0.00
+    ConversationQuality: 0.50
+    PolicyAdherence: 0.00
+
+  [FAIL] Demanding customer wants order update (demanding, 1 turns, 0.1s)
+    Tools: []
+    GoalCompletion: 0.00
+    ToolUsage: 0.00
+    TurnEfficiency: 0.00
+    ConversationQuality: 0.50
+    PolicyAdherence: 0.00
+
+  [FAIL] Customer wants to return a product (neutral, 1 turns, 0.1s)
+    Tools: []
+    GoalCompletion: 0.00
+    ToolUsage: 0.00
+    TurnEfficiency: 0.00
+    ConversationQuality: 0.50
+    PolicyAdherence: 0.00
+
+  [FAIL] Confused customer needs product help (confused, 1 turns, 0.1s)
+    Tools: []
+    GoalCompletion: 0.00
+    ToolUsage: 0.00
+    TurnEfficiency: 0.00
+    ConversationQuality: 0.50
+    PolicyAdherence: 0.00
+
+  [FAIL] Customer changes shipping address (polite, 1 turns, 0.1s)
+    Tools: []
+    GoalCompletion: 0.00
+    ToolUsage: 0.00
+    TurnEfficiency: 0.00
+    ConversationQuality: 0.50
+    PolicyAdherence: 0.00
+
+================================================================================
