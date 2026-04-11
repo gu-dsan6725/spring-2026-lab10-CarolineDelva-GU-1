@@ -36,9 +36,9 @@ Thumbs.db
 # Project specific
 *.csv
 .scratchpad/
-logs/
+
 output/
-*.log
+
 
 # AWS
 .aws/
