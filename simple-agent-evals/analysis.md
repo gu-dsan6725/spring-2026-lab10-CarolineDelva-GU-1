@@ -23,7 +23,7 @@ What was the input question?
 What is the distance from Los Angeles to San Francisco and what are some good stops along the way?
 
 What did the agent output vs what did the expected output say?
-"The drive from Los Angeles to San Francisco is 380.6 miles and takes approximately 7 hours 6 minutes… Here are some stops: Bakersfield, Fresno, Salinas, Gilroy…"
+The drive from Los Angeles to San Francisco is 380.6 miles and takes approximately 7 hours 6 minutes… Here are some stops: Bakersfield, Fresno, Salinas, Gilroy
 
 We expected the distance and some recommended stops 
 
